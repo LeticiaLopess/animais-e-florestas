@@ -12,7 +12,19 @@
 	</script> 
 	<!--pode ser que exista usuários que não renderizem scripts javascript,e para a pessoa não ver todas as informações por trás do site, utilizamos esse script que adiciona a classe js no documento do html [poderia ser qualquer nome de classe] para saber se o js está funcionando antes de renderizar o html-->
 
-	<section class="container animais" data-group="animais">
+	<header class="menu">
+		<a class="logo" href="/">Nature</a>
+		<nav class="menu-nav">
+			<ul>
+				<li><a href="#animais">Animais</a></li>
+				<li><a href="#florestas">Florestas</a></li>
+				<li><a href="#montanhas">Montanhas</a></li>
+			 	<!-- <li><a href="https://google.com" target="_blank">Google</a></li> [link sem #]-->
+			</ul>
+		</nav>
+	</header>
+
+	<section class="container animais" data-group="animais" id="animais">
 
 		<h1>Animais Espirituais</h1>
 
@@ -63,7 +75,7 @@
 
 	</section>
 
-	<section class="florestas" data-group="florestas">
+	<section class="florestas" data-group="florestas" id="florestas">
 	<div class="container">
 		<h1>Florestas Termais</h1>
 
@@ -125,6 +137,56 @@
 		</div>
 	</div>
 	</section>
+
+	<section class="container montanhas" data-group="montanhas" id="montanhas">
+
+		<h1>Montanhas da Alma</h1>
+
+		<ul class="tab-menu">
+			<li><a href="#pico" data-click="pico">Pico</a></li>
+			<li><a href="#montanha" data-click="montanha">Montanha</a></li>
+			<li><a href="#monte" data-click="monte">Monte</a></li>
+		</ul>
+
+		<div class="item" id="pico" data-target="pico">
+			<div class="item-img">
+				<img src="img/pico.jpg" alt="Pico">
+				<h2>Pico</h2>
+			</div>
+			<div class="item-info">
+				<h3>Características</h3>
+				<p>Todavia, a valorização de fatores subjetivos oferece uma interessante oportunidade para verificação das formas de ação.</p>
+				<h3>Habitat</h3>
+				<p>Todavia, a valorização de fatores subjetivos oferece uma interessante oportunidade para verificação das formas de ação.</p>
+			</div>
+		</div>
+
+		<div class="item" id="montanha" data-target="montanha">
+			<div class="item-img">
+				<img src="img/montanha.jpg" alt="Montanha">
+				<h2>Montanha</h2>
+			</div>
+			<div class="item-info">
+				<h3>Características</h3>
+				<p>Todavia, a valorização de fatores subjetivos oferece uma interessante oportunidade para verificação das formas de ação.</p>
+				<h3>Habitat</h3>
+				<p>Todavia, a valorização de fatores subjetivos oferece uma interessante oportunidade para verificação das formas de ação.</p>
+			</div>
+		</div>
+
+		<div class="item" id="monte" data-target="monte">
+			<div class="item-img">
+				<img src="img/monte.jpg" alt="Monte">
+				<h2>Monte</h2>
+			</div>
+			<div class="item-info">
+				<h3>Características</h3>
+				<p>Todavia, a valorização de fatores subjetivos oferece uma interessante oportunidade para verificação das formas de ação.</p>
+				<h3>Habitat</h3>
+				<p>Todavia, a valorização de fatores subjetivos oferece uma interessante oportunidade para verificação das formas de ação.</p>
+			</div>
+		</div>
+
 
 
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>

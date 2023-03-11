@@ -20,97 +20,21 @@ $('[data-group]').each(function(){
       });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* var classActive = 'active'
-
-$('.animais .tab-menu a').first().addClass(classActive);
-$('.animais .item').first().addClass(classActive);
-
-$(document).ready(function() {
-  $('.animais .tab-menu a').click(function(e){
-    e.preventDefault();
-    var itemId = $(this).attr('href');
-    
-    $('.animais .tab-menu a, .animais .item').removeClass(classActive); 
-    $(this).addClass(classActive);
-    $(itemId).addClass(classActive);
-  });
+$('.menu-nav a[href^="#"]').click(function(e){ // ^="#" esse "alguma coisa^="algo" significa que vai selecionar todos os algo de alguma coisa que tiverem nesse trecho especificamente"
+  e.preventDefault();
+  var id = $(this).attr('href'), // pega o atributo href [#fox - igual ao id nesse caso]
+      menuHeight = $('.menu').innerHeight(),
+      targetOffset = $(id).offset().top; // objeto que retorna a distância de top e left
   
-  $('.florestas .tab-menu a').first().addClass(classActive);
-  $('.florestas .item').first().addClass(classActive);
-  
-  $('.florestas .tab-menu a').click(function(e){
-    e.preventDefault();
-    var itemId = $(this).attr('href');
-    
-    $('.florestas .tab-menu a, .florestas .item').removeClass(classActive); 
-    $(this).addClass(classActive);
-    $(itemId).addClass(classActive);
-  });
-}); */
+  $('html, body').animate({
+    scrollTop: targetOffset - menuHeight
+  }, 500);
 
+});
 
-
-// e.preventDefault() - previne/evita o pulo para a div quando é clicado no botão.
-
-// var itemId = $(this).attr('href') - pego o valor do href desse elemento e armazeno com a var.
-
-// $('.tab-menu a').removeClass('active') - remove a classe de qualquer a que tiver o active.
-
-// $(this).addClass('active') - // adicionará a classe 'active' para qualquer 'a' do elemento de classe 'tab-menu' que seja clicado, e linkado a isso temos o 'ul li a.active' no css para estilizar caso o usuário clique [adiciona rapidamente, fica nesse loop, por isso só fica selecionado o que você clicar].
-
-// $(itemId).addClass('active') - como o href de fox é #fox, quando pego o valor de href, é o mesmo que eu pegar o elemento de id='fox', então atribuo a esse elemento a classe active.
+$('.logo').click(function(e){
+  e.preventDefault();
+  $('html, body').animate({
+    scrollTop: 0
+  }, 500)
+})
