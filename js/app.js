@@ -20,7 +20,7 @@ $('[data-group]').each(function(){
       });
 });
 
-$('.menu-nav a[href^="#"]').click(function(e){ // ^="#" esse "alguma coisa^="algo" significa que vai selecionar todos os algo de alguma coisa que tiverem nesse trecho especificamente"
+$('.menu-nav a[href^="#"]').click(function(e){ // ^="#" esse "alguma coisa^="algo" significa que vai selecionar todos os algos de alguma coisa que tiverem nesse trecho especificamente"
   e.preventDefault();
   var id = $(this).attr('href'), // pega o atributo href [#fox - igual ao id nesse caso]
       menuHeight = $('.menu').innerHeight(),
@@ -38,3 +38,20 @@ $('.logo').click(function(e){
     scrollTop: 0
   }, 500)
 })
+
+$('section').each(function(){
+  var height = $(this).height(),
+      offsetTop = $(this).offset().top, // objeto que retorna a distância top e left, mas selecionamos top
+      menuHeight = $('.menu').innerHeight(), // innerHeight inclui os paddings
+      id = $(this).attr('id'), // pegando o valor do id
+      $itemMenu = $('a[href="#' + id + '"]'); // #animais, não é animais direto lá no html, por isso colocamos o #
+
+  $(window).scroll(function(){ // verificando a distância do scroll até o topo, da barra
+    var scrollTop = $(window).scrollTop();
+    if(offsetTop - menuHeight < scrollTop && offsetTop + height - menuHeight > scrollTop) {
+      $itemMenu.addClass('active');
+    } else {
+      $itemMenu.removeClass('active')
+    }
+  });
+});
