@@ -1,4 +1,81 @@
-var classActive = 'active'
+$('[data-group]').each(function(){
+  var $allTarget = $(this).find('[data-target]'), // [] - seleciona todos os data-target's
+      $allClick = $(this).find('[data-click]'),
+      activeClass = 'active'
+
+      $allTarget.first().addClass(activeClass)
+      $allClick.first().addClass(activeClass)
+
+      $allClick.click(function(e) {
+        e.preventDefault();
+
+        var id = $(this).data('click'), // pega o valor dentro do data-click
+            $target = $('[data-target="' + id + '"]') // data-target = fox [exemplo]
+
+        $allClick.removeClass(activeClass);
+        $allTarget.removeClass(activeClass);
+
+        $target.addClass(activeClass);
+        $(this).addClass(activeClass);
+      });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* var classActive = 'active'
 
 $('.animais .tab-menu a').first().addClass(classActive);
 $('.animais .item').first().addClass(classActive);
@@ -24,7 +101,7 @@ $(document).ready(function() {
     $(this).addClass(classActive);
     $(itemId).addClass(classActive);
   });
-});
+}); */
 
 
 
