@@ -1,3 +1,19 @@
+// Debounce do Lodash, vai evitar que quando rolemos a tela, a função de scroll seja ativada muitas vezes, o que exige muito e deixa pesado [para .scroll e .resize]
+debounce = function(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
 // Mudar tab ao clique
 $('[data-group]').each(function(){
   var $allTarget = $(this).find('[data-target]'), // [] - seleciona todos os data-target's
@@ -67,6 +83,7 @@ $('.mobile-btn').click(function(){
 });
 
 // Slider
+(function(){
 function slider(sliderName, velocidade) {
   var sliderClass = '.' + sliderName,
       activeClass = 'active';
@@ -90,7 +107,33 @@ function slider(sliderName, velocidade) {
         activeSlide.removeClass(activeClass);
         nextSlide.addClass(activeClass);
   }
-  
 }
 
-slider ('introducao', 2000) // classe e velocidade
+slider('introducao', 2000) // classe e velocidade
+})();
+
+// Animação ao Scroll
+(function(){
+  var $target = $('[data-anime="scroll"]'),
+      animationClass = 'animate',
+      offset = $(window).height() * 3/4; // após 3/4 da tela que adicionará a classe, então não fica com muito espaço em branco antes de animar
+
+  function animeScroll() {
+    var documentTop = $(document).scrollTop();
+
+    $target.each(function(){
+      var itemTop = $(this).offset().top;
+      if (documentTop > itemTop - offset) {
+        $(this).addClass(animationClass);
+      } else {
+        $(this).removeClass(animationClass)
+      }
+    });
+  }
+
+  animeScroll();
+
+  $(document).scroll(debounce(function(){ // o evento scroll ativa 
+    animeScroll()
+  }, 200));
+})();
